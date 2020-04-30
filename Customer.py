@@ -7,7 +7,16 @@ class Customer(WebUser):
         self.orders=[]
 
     def createCustomerAccount(self,username,custid,email,phonenum):
-        pass
+        try:
+            self.file_name = 'user.txt'
+            self.file = open(self.file_name, 'a')
+            self.file.writelines('\n')
+            self.file.writelines( self.username +',' +self.custid +',' +self.email +',' +self.phonenum+ '\n' )
+            self.file.close()
+            print('\n Data saved successfully')
+
+        except:
+            print('\n Error saving data')
 
     def viewRegisteredEvents(self,username,event_name,event_time,getticket):
         pass

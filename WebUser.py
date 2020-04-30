@@ -15,7 +15,7 @@ class WebUser:
     def getPassword(self):
         return self.password
 
-    def getUsertype(self):
+    def getUserType(self):
         return self.usertype
 
     def getPhoneNumber(self):
@@ -24,13 +24,13 @@ class WebUser:
     def setEmail(self,email):
         self.email=email
 
-    def setUsername(self,username):
+    def setUserName(self,username):
         self.username=username
 
     def setPassword(self,password):
         self.password=password
 
-    def setUsertype(self,usertype):
+    def setUserType(self,usertype):
         self.usertype=usertype
 
     def setPhoneNumber(self,phonenum):
