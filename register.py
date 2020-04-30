@@ -4,42 +4,7 @@ from Admin import Admin
 import tkinter as tk
 from tkinter.ttk import Combobox
 import random
-
-class Register_Control:
-    def __init__(self, email, password,name,username,phonenum,usertype):
-        #print(email,password,name,username,phonenum,usertype)
-        if usertype=="Customer":
-            self.customer=Customer()
-            self.customer.setEmail(email)
-            self.customer.setPassword(password)
-            self.customer.setUserName(username)
-            self.customer.setPhoneNumber(phonenum)
-            self.customer.setUserType(usertype)
-            self.customer.setCustomerName(name)
-            id= ' '.join([str(random.randint(0, 999)).zfill(3) for _ in range(2)])
-            self.customer.setCustomerId(id)
-            self.customer.createCustomerAccount(username,id,email,phonenum)
-
-        if usertype=="Admin":
-            self.admin=Admin()
-            self.admin.setEmail(email)
-            self.admin.setPassword(password)
-            self.admin.setUserName(username)
-            self.admin.setPhoneNumber(phonenum)
-            self.admin.setUserType(usertype)
-            self.admin.setAdminName(name)
-            id= ' '.join([str(random.randint(0, 999)).zfill(3) for _ in range(2)])
-            self.admin.setAdminId(id)
-            self.admin.createAdminAccount(username,id,email,phonenum)
-
-
-        # self.customer=Customer()
-        # self.customer.setEmail(email)
-        # self.customer.setPassword(password)
-        # self.email = self.customer.getEmail()
-        # self.password = self.customer.getPassword()
-        # self.save()
-
+from tkinter.messagebox import showinfo
 
 
 
@@ -74,12 +39,12 @@ class Register_Form:
 
 
         self.__createLabel('Password: ', 230)
-        self.inputPassword = self.__createInput(260)
-        self.inputPassword.config(show = '*')
+        self.password = self.__createInput(260)
+        self.password.config(show = '*')
 
 
         self.__createLabel('Email: ', 290)
-        self.inputEmail = self.__createInput(310)
+        self.email = self.__createInput(310)
 
 
         self.__createLabel('Phone Number: ', 340)
@@ -111,17 +76,45 @@ class Register_Form:
         return self.combo
 
 
-
     def __createBtnSubmit(self):
-        self.button = tk.Button(self.window, text = 'Submit', width = 6, background = 'green', command = self.get_input_data)
+        self.button = tk.Button(self.window, text = 'Submit', width = 6, background = 'green', command = self.registerUser)
         self.button.place(x=500, y=400)
 
 
-    def get_input_data(self):
-        self.control = Register_Control(self.inputEmail.get(), self.inputPassword.get(),self.name.get(),self.username.get(),self.phonenum.get(),self.usertype.get())
-        self.respost = self. __createLabel('User created successfully', 40)
+    def registerUser(self):
+        #self.control = Create_User(self.inputEmail.get(), self.inputPassword.get(),self.name.get(),self.username.get(),self.phonenum.get(),self.usertype.get())
+        #self.respost = self. __createLabel('User created successfully', 40)
+        if self.usertype.get()=="Customer":
+            self.customer=Customer()
+            self.customer.setEmail(self.email.get())
+            self.customer.setPassword(self.password.get())
+            self.customer.setUserName(self.username.get())
+            self.customer.setPhoneNumber(self.phonenum.get())
+            self.customer.setUserType(self.usertype.get())
+            self.customer.setCustomerName(self.name.get())
+            id= ' '.join([str(random.randint(0, 999)).zfill(3) for _ in range(2)])
+            self.customer.setCustomerId(id)
+            try:
+                self.customer.createCustomerAccount(self.username.get(),id,self.email.get(),self.phonenum.get())
+                showinfo("Customer Account Created")
+            except:
+                showinfo("Error in Creating Account ")
 
-
+        if self.usertype.get()=="Admin":
+            self.admin=Admin()
+            self.admin.setEmail(self.email.get())
+            self.admin.setPassword(self.password.get())
+            self.admin.setUserName(self.username.get())
+            self.admin.setPhoneNumber(self.phonenum.get())
+            self.admin.setUserType(self.usertype.get())
+            self.admin.setAdminName(self.name.get())
+            id2= ' '.join([str(random.randint(0, 999)).zfill(3) for _ in range(2)])
+            self.admin.setAdminId(id2)
+            try:
+                self.admin.createAdminAccount(self.username.get(),id2,self.email.get(),self.phonenum.get())
+                showinfo("Admin Account Created")
+            except:
+                showinfo("Error in Creating Account ")
 
 
 form = Register_Form()
