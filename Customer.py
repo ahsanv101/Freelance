@@ -11,7 +11,7 @@ class Customer(WebUser):
             self.file_name = 'user.txt'
             self.file = open(self.file_name, 'a')
             self.file.writelines('\n')
-            self.file.writelines( self.username +',' +self.custid +',' +self.email +',' +self.phonenum+ '\n' )
+            self.file.writelines( self.username +',' +   self.password +',' +self.custid +',' +self.email +',' +self.phonenum+ '\n' )
             self.file.close()
             print('\n Data saved successfully')
 

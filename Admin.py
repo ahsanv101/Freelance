@@ -11,7 +11,7 @@ class Admin(WebUser):
             self.file_name = 'employees.txt'
             self.file = open(self.file_name, 'a')
             self.file.writelines('\n')
-            self.file.writelines( self.username +',' +self.adminid +',' +self.email +',' +self.phonenum+ '\n' )
+            self.file.writelines( self.username +',' +self.password+',' +self.adminid +',' +self.email +',' +self.phonenum+ '\n' )
             self.file.close()
             print('\n Data saved successfully')
 

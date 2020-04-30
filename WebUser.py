@@ -37,7 +37,30 @@ class WebUser:
         self.phonenum=phonenum
 
     def login(self,username,password):
-        pass
+        lst=[]
+        if self.usertype=="Customer":
+            file1 = open('user.txt', 'r')
+            
+        else:
+            file1 = open('employees.txt', 'r')
+        try:
+            
+            Lines = file1.readlines()
+            for line in Lines:
+                if line.strip()!='':
+                    cred=line.strip()
+                    cred=cred.split(',')
+                    lst.append(cred)
+
+            for i in lst:
+                if str(i[0])==str(username):
+                    if str(i[1])==str(password):
+                        return True
+            return False
+                
+        except:
+            return False
+
 
     def userExits(self,username,password):
         pass
