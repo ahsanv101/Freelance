@@ -7,7 +7,6 @@ import random
 from tkinter.messagebox import showinfo
 
 
-
 class Register_Form:
     def __init__(self):
         self.__createView()
@@ -82,8 +81,6 @@ class Register_Form:
 
 
     def registerUser(self):
-        #self.control = Create_User(self.inputEmail.get(), self.inputPassword.get(),self.name.get(),self.username.get(),self.phonenum.get(),self.usertype.get())
-        #self.respost = self. __createLabel('User created successfully', 40)
         if self.usertype.get()=="Customer":
             self.customer=Customer()
             self.customer.setEmail(self.email.get())
@@ -96,9 +93,9 @@ class Register_Form:
             self.customer.setCustomerId(id)
             try:
                 self.customer.createCustomerAccount(self.username.get(),id,self.email.get(),self.phonenum.get())
-                showinfo("Customer Account Created")
+                showinfo("Sucess","Account Created")
             except:
-                showinfo("Error in Creating Account ")
+                showinfo("Error", "Error in Creating Account ")
 
         if self.usertype.get()=="Admin":
             self.admin=Admin()
@@ -112,9 +109,9 @@ class Register_Form:
             self.admin.setAdminId(id2)
             try:
                 self.admin.createAdminAccount(self.username.get(),id2,self.email.get(),self.phonenum.get())
-                showinfo("Admin Account Created")
+                showinfo("Sucess","Admin Account Created")
             except:
-                showinfo("Error in Creating Account ")
+                showinfo("Error","Error in Creating Account ")
 
 
 form = Register_Form()
