@@ -1,7 +1,7 @@
 from WebUser import WebUser
 class Customer(WebUser):
     def __init__(self):
-        super().__init__(self)
+        WebUser.__init__(self)
         self.custid=None
         self.cust_name=None
         self.orders=[]

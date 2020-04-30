@@ -27,7 +27,7 @@ class WebUser:
     def setUsername(self,username):
         self.username=username
 
-    def getPassword(self,password):
+    def setPassword(self,password):
         self.password=password
 
     def setUsertype(self,usertype):
